@@ -1,0 +1,678 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BIShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdminUserMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" />
+          <Property Name="Password" Type="varchar" MaxLength="100" />
+          <Property Name="Remarks" Type="varchar" MaxLength="200" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="BannerMaster">
+          <Key>
+            <PropertyRef Name="BannerId" />
+          </Key>
+          <Property Name="BannerId" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="Url" Type="varchar" MaxLength="500" />
+          <Property Name="Remarks" Type="varchar" MaxLength="200" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="BrandMaster">
+          <Key>
+            <PropertyRef Name="BrandId" />
+          </Key>
+          <Property Name="BrandId" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="Remarks" Type="varchar" MaxLength="300" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="CartMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="Uid" Type="nvarchar" MaxLength="7" />
+          <Property Name="Pid" Type="nvarchar" MaxLength="7" />
+          <Property Name="Quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="CategoryMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="500" />
+          <Property Name="Remarks" Type="varchar" MaxLength="200" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="BannerImage" Type="varchar" MaxLength="700" />
+        </EntityType>
+        <EntityType Name="CityMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="250" />
+          <Property Name="StateId" Type="nvarchar" MaxLength="7" />
+          <Property Name="PinCode" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="CustomerDetail">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="Email" Type="nvarchar" MaxLength="250" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="CityId" Type="nvarchar" MaxLength="7" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="12" />
+          <Property Name="Username" Type="nvarchar" MaxLength="200" />
+          <Property Name="Password" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="GroupMaster">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="GroupName" Type="varchar" MaxLength="100" />
+          <Property Name="Remark" Type="varchar" MaxLength="200" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="OfferImageMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="ProductId" Type="varchar" MaxLength="7" />
+          <Property Name="ProductName" Type="varchar" MaxLength="100" />
+          <Property Name="BannerUrl" Type="varchar" MaxLength="200" />
+          <Property Name="Remarks" Type="varchar" MaxLength="200" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="OrderNo" />
+          </Key>
+          <Property Name="OrderNo" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="OrderDate" Type="datetime" />
+          <Property Name="ManufacturerComapany" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="CityId" Type="nvarchar" MaxLength="7" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="12" />
+          <Property Name="PaymentMode" Type="nvarchar" MaxLength="30" />
+          <Property Name="Wallet" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="OnlineDD" Type="nvarchar" MaxLength="30" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="DDno" Type="nvarchar" MaxLength="20" />
+          <Property Name="DDAmount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="DDDate" Type="datetime" />
+          <Property Name="OrderStatus" Type="nvarchar" MaxLength="20" />
+          <Property Name="CancelDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="ProductImages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="Imageurl" Type="nvarchar" MaxLength="500" />
+          <Property Name="ProductId" Type="nvarchar" MaxLength="7" />
+        </EntityType>
+        <EntityType Name="ProductMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="CategoryId" Type="varchar" MaxLength="7" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="100" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="MRP" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Description" Type="varchar" MaxLength="100" />
+          <Property Name="Remarks" Type="varchar" MaxLength="200" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="SubCategoryId" Type="varchar" MaxLength="7" />
+          <Property Name="BrandId" Type="varchar" MaxLength="7" />
+          <Property Name="Dp" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Bv" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="HomePage" Type="bit" />
+          <Property Name="Recommended" Type="bit" />
+          <Property Name="Featured" Type="bit" />
+          <Property Name="DetailDescription" Type="varchar" MaxLength="500" />
+          <Property Name="ProductImage" Type="varchar" MaxLength="500" />
+          <Property Name="BrandName" Type="varchar" MaxLength="150" />
+          <Property Name="SubCategoryName" Type="varchar" MaxLength="150" />
+          <Property Name="Quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="ProductOrderDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="ProductId" Type="nvarchar" MaxLength="7" />
+          <Property Name="Quantity" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="OrderId" Type="nvarchar" MaxLength="7" />
+        </EntityType>
+        <EntityType Name="ProductRemark">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" />
+          <Property Name="Rating" Type="smallint" />
+          <Property Name="Review" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ProductId" Type="nvarchar" MaxLength="7" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ShoppingUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="500" />
+          <Property Name="Password" Type="varchar" MaxLength="200" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="StateMaster">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="StateName" Type="varchar" MaxLength="200" />
+          <Property Name="Remark" Type="varchar" MaxLength="200" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="SubCategoryMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="CategoryId" Type="varchar" MaxLength="7" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="100" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Remarks" Type="varchar" MaxLength="200" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="BIShopModelStoreContainer">
+          <EntitySet Name="AdminUserMaster" EntityType="Self.AdminUserMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BannerMaster" EntityType="Self.BannerMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BrandMaster" EntityType="Self.BrandMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CartMaster" EntityType="Self.CartMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryMaster" EntityType="Self.CategoryMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CityMaster" EntityType="Self.CityMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerDetail" EntityType="Self.CustomerDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupMaster" EntityType="Self.GroupMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OfferImageMaster" EntityType="Self.OfferImageMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductImages" EntityType="Self.ProductImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductMaster" EntityType="Self.ProductMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductOrderDetail" EntityType="Self.ProductOrderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductRemark" EntityType="Self.ProductRemark" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShoppingUser" EntityType="Self.ShoppingUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StateMaster" EntityType="Self.StateMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubCategoryMaster" EntityType="Self.SubCategoryMaster" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BIShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdminUserMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="BannerMaster">
+          <Key>
+            <PropertyRef Name="BannerId" />
+          </Key>
+          <Property Name="BannerId" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="BrandMaster">
+          <Key>
+            <PropertyRef Name="BrandId" />
+          </Key>
+          <Property Name="BrandId" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="CategoryMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="BannerImage" Type="String" MaxLength="700" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GroupMaster">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GroupName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="OfferImageMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductId" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BannerUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="SubCategoryMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CategoryId" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="BIShopEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdminUserMasters" EntityType="Self.AdminUserMaster" />
+          <EntitySet Name="BannerMasters" EntityType="Self.BannerMaster" />
+          <EntitySet Name="BrandMasters" EntityType="Self.BrandMaster" />
+          <EntitySet Name="CategoryMasters" EntityType="Self.CategoryMaster" />
+          <EntitySet Name="GroupMasters" EntityType="Self.GroupMaster" />
+          <EntitySet Name="OfferImageMasters" EntityType="Self.OfferImageMaster" />
+          <EntitySet Name="SubCategoryMasters" EntityType="Self.SubCategoryMaster" />
+          <EntitySet Name="StateMasters" EntityType="BIShopModel.StateMaster" />
+          <EntitySet Name="ProductImages" EntityType="BIShopModel.ProductImage" />
+          <EntitySet Name="CityMasters" EntityType="BIShopModel.CityMaster" />
+          <EntitySet Name="CustomerDetails" EntityType="BIShopModel.CustomerDetail" />
+          <EntitySet Name="OrderDetails" EntityType="BIShopModel.OrderDetail" />
+          <EntitySet Name="ProductMasters" EntityType="BIShopModel.ProductMaster" />
+          <EntitySet Name="ProductOrderDetails" EntityType="BIShopModel.ProductOrderDetail" />
+          <EntitySet Name="ProductRemarks" EntityType="BIShopModel.ProductRemark" />
+          <EntitySet Name="CartMasters" EntityType="BIShopModel.CartMaster" />
+          <EntitySet Name="ShoppingUsers" EntityType="BIShopModel.ShoppingUser" />
+        </EntityContainer>
+        <EntityType Name="StateMaster">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="StateName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="ProductImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="Imageurl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ProductId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CityMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="CityName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="StateId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="PinCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CustomerDetail">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CityId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Username" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="OrderNo" />
+          </Key>
+          <Property Name="OrderNo" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="OrderDate" Type="DateTime" Precision="3" />
+          <Property Name="ManufacturerComapany" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CityId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentMode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Wallet" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="OnlineDD" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DDno" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DDAmount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DDDate" Type="DateTime" Precision="3" />
+          <Property Name="OrderStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CancelDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="ProductMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryId" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MRP" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="SubCategoryId" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="BrandId" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="Dp" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Bv" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="HomePage" Type="Boolean" />
+          <Property Name="Recommended" Type="Boolean" />
+          <Property Name="Featured" Type="Boolean" />
+          <Property Name="DetailDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ProductImage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="BrandName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="SubCategoryName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ProductOrderDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="ProductId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="OrderId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ProductRemark">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Rating" Type="Int16" />
+          <Property Name="Review" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ProductId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CartMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Uid" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Pid" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ShoppingUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BIShopModelStoreContainer" CdmEntityContainer="BIShopEntities">
+          <EntitySetMapping Name="AdminUserMasters">
+            <EntityTypeMapping TypeName="BIShopModel.AdminUserMaster">
+              <MappingFragment StoreEntitySet="AdminUserMaster">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BannerMasters">
+            <EntityTypeMapping TypeName="BIShopModel.BannerMaster">
+              <MappingFragment StoreEntitySet="BannerMaster">
+                <ScalarProperty Name="BannerId" ColumnName="BannerId" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BrandMasters">
+            <EntityTypeMapping TypeName="BIShopModel.BrandMaster">
+              <MappingFragment StoreEntitySet="BrandMaster">
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryMasters">
+            <EntityTypeMapping TypeName="BIShopModel.CategoryMaster">
+              <MappingFragment StoreEntitySet="CategoryMaster">
+                <ScalarProperty Name="BannerImage" ColumnName="BannerImage" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupMasters">
+            <EntityTypeMapping TypeName="BIShopModel.GroupMaster">
+              <MappingFragment StoreEntitySet="GroupMaster">
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfferImageMasters">
+            <EntityTypeMapping TypeName="BIShopModel.OfferImageMaster">
+              <MappingFragment StoreEntitySet="OfferImageMaster">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="BannerUrl" ColumnName="BannerUrl" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubCategoryMasters">
+            <EntityTypeMapping TypeName="BIShopModel.SubCategoryMaster">
+              <MappingFragment StoreEntitySet="SubCategoryMaster">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StateMasters">
+            <EntityTypeMapping TypeName="BIShopModel.StateMaster">
+              <MappingFragment StoreEntitySet="StateMaster">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductImages">
+            <EntityTypeMapping TypeName="BIShopModel.ProductImage">
+              <MappingFragment StoreEntitySet="ProductImages">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Imageurl" ColumnName="Imageurl" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CityMasters">
+            <EntityTypeMapping TypeName="BIShopModel.CityMaster">
+              <MappingFragment StoreEntitySet="CityMaster">
+                <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerDetails">
+            <EntityTypeMapping TypeName="BIShopModel.CustomerDetail">
+              <MappingFragment StoreEntitySet="CustomerDetail">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="BIShopModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetail">
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CancelDate" ColumnName="CancelDate" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="DDDate" ColumnName="DDDate" />
+                <ScalarProperty Name="DDAmount" ColumnName="DDAmount" />
+                <ScalarProperty Name="DDno" ColumnName="DDno" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="OnlineDD" ColumnName="OnlineDD" />
+                <ScalarProperty Name="Wallet" ColumnName="Wallet" />
+                <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ManufacturerComapany" ColumnName="ManufacturerComapany" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductMasters">
+            <EntityTypeMapping TypeName="BIShopModel.ProductMaster">
+              <MappingFragment StoreEntitySet="ProductMaster">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+                <ScalarProperty Name="DetailDescription" ColumnName="DetailDescription" />
+                <ScalarProperty Name="Featured" ColumnName="Featured" />
+                <ScalarProperty Name="Recommended" ColumnName="Recommended" />
+                <ScalarProperty Name="HomePage" ColumnName="HomePage" />
+                <ScalarProperty Name="Bv" ColumnName="Bv" />
+                <ScalarProperty Name="Dp" ColumnName="Dp" />
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+                <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="MRP" ColumnName="MRP" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductOrderDetails">
+            <EntityTypeMapping TypeName="BIShopModel.ProductOrderDetail">
+              <MappingFragment StoreEntitySet="ProductOrderDetail">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductRemarks">
+            <EntityTypeMapping TypeName="BIShopModel.ProductRemark">
+              <MappingFragment StoreEntitySet="ProductRemark">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Review" ColumnName="Review" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CartMasters">
+            <EntityTypeMapping TypeName="BIShopModel.CartMaster">
+              <MappingFragment StoreEntitySet="CartMaster">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Pid" ColumnName="Pid" />
+                <ScalarProperty Name="Uid" ColumnName="Uid" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShoppingUsers">
+            <EntityTypeMapping TypeName="BIShopModel.ShoppingUser">
+              <MappingFragment StoreEntitySet="ShoppingUser">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

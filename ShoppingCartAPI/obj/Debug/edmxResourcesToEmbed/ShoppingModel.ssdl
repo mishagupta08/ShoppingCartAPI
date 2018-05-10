@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BIShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AdminUserMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="100" />
+    <Property Name="Password" Type="varchar" MaxLength="100" />
+    <Property Name="Remarks" Type="varchar" MaxLength="200" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="BannerMaster">
+    <Key>
+      <PropertyRef Name="BannerId" />
+    </Key>
+    <Property Name="BannerId" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="Url" Type="varchar" MaxLength="500" />
+    <Property Name="Remarks" Type="varchar" MaxLength="200" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="BrandMaster">
+    <Key>
+      <PropertyRef Name="BrandId" />
+    </Key>
+    <Property Name="BrandId" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="Remarks" Type="varchar" MaxLength="300" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="CartMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="Uid" Type="nvarchar" MaxLength="7" />
+    <Property Name="Pid" Type="nvarchar" MaxLength="7" />
+    <Property Name="Quantity" Type="int" />
+  </EntityType>
+  <EntityType Name="CategoryMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="500" />
+    <Property Name="Remarks" Type="varchar" MaxLength="200" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="BannerImage" Type="varchar" MaxLength="700" />
+  </EntityType>
+  <EntityType Name="CityMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="CityName" Type="nvarchar" MaxLength="250" />
+    <Property Name="StateId" Type="nvarchar" MaxLength="7" />
+    <Property Name="PinCode" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="CustomerDetail">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" />
+    <Property Name="Email" Type="nvarchar" MaxLength="250" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="CityId" Type="nvarchar" MaxLength="7" />
+    <Property Name="MobileNo" Type="nvarchar" MaxLength="12" />
+    <Property Name="Username" Type="nvarchar" MaxLength="200" />
+    <Property Name="Password" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="GroupMaster">
+    <Key>
+      <PropertyRef Name="GroupId" />
+    </Key>
+    <Property Name="GroupId" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="GroupName" Type="varchar" MaxLength="100" />
+    <Property Name="Remark" Type="varchar" MaxLength="200" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="OfferImageMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="ProductId" Type="varchar" MaxLength="7" />
+    <Property Name="ProductName" Type="varchar" MaxLength="100" />
+    <Property Name="BannerUrl" Type="varchar" MaxLength="200" />
+    <Property Name="Remarks" Type="varchar" MaxLength="200" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="OrderNo" />
+    </Key>
+    <Property Name="OrderNo" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="OrderDate" Type="datetime" />
+    <Property Name="ManufacturerComapany" Type="nvarchar" MaxLength="100" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="CityId" Type="nvarchar" MaxLength="7" />
+    <Property Name="MobileNo" Type="nvarchar" MaxLength="12" />
+    <Property Name="PaymentMode" Type="nvarchar" MaxLength="30" />
+    <Property Name="Wallet" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="OnlineDD" Type="nvarchar" MaxLength="30" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="DDno" Type="nvarchar" MaxLength="20" />
+    <Property Name="DDAmount" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="DDDate" Type="datetime" />
+    <Property Name="OrderStatus" Type="nvarchar" MaxLength="20" />
+    <Property Name="CancelDate" Type="datetime" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="ProductImages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="Imageurl" Type="nvarchar" MaxLength="500" />
+    <Property Name="ProductId" Type="nvarchar" MaxLength="7" />
+  </EntityType>
+  <EntityType Name="ProductMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="CategoryId" Type="varchar" MaxLength="7" />
+    <Property Name="CategoryName" Type="varchar" MaxLength="100" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="MRP" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Description" Type="varchar" MaxLength="100" />
+    <Property Name="Remarks" Type="varchar" MaxLength="200" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="SubCategoryId" Type="varchar" MaxLength="7" />
+    <Property Name="BrandId" Type="varchar" MaxLength="7" />
+    <Property Name="Dp" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Bv" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="HomePage" Type="bit" />
+    <Property Name="Recommended" Type="bit" />
+    <Property Name="Featured" Type="bit" />
+    <Property Name="DetailDescription" Type="varchar" MaxLength="500" />
+    <Property Name="ProductImage" Type="varchar" MaxLength="500" />
+    <Property Name="BrandName" Type="varchar" MaxLength="150" />
+    <Property Name="SubCategoryName" Type="varchar" MaxLength="150" />
+    <Property Name="Quantity" Type="int" />
+  </EntityType>
+  <EntityType Name="ProductOrderDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="ProductId" Type="nvarchar" MaxLength="7" />
+    <Property Name="Quantity" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="OrderId" Type="nvarchar" MaxLength="7" />
+  </EntityType>
+  <EntityType Name="ProductRemark">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" />
+    <Property Name="Email" Type="nvarchar" MaxLength="200" />
+    <Property Name="Rating" Type="smallint" />
+    <Property Name="Review" Type="nvarchar" MaxLength="1000" />
+    <Property Name="ProductId" Type="nvarchar" MaxLength="7" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ShoppingUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="500" />
+    <Property Name="Password" Type="varchar" MaxLength="200" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="StateMaster">
+    <Key>
+      <PropertyRef Name="StateId" />
+    </Key>
+    <Property Name="StateId" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="StateName" Type="varchar" MaxLength="200" />
+    <Property Name="Remark" Type="varchar" MaxLength="200" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="SubCategoryMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="CategoryId" Type="varchar" MaxLength="7" />
+    <Property Name="CategoryName" Type="varchar" MaxLength="100" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="Remarks" Type="varchar" MaxLength="200" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityContainer Name="BIShopModelStoreContainer">
+    <EntitySet Name="AdminUserMaster" EntityType="Self.AdminUserMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BannerMaster" EntityType="Self.BannerMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BrandMaster" EntityType="Self.BrandMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CartMaster" EntityType="Self.CartMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CategoryMaster" EntityType="Self.CategoryMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CityMaster" EntityType="Self.CityMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustomerDetail" EntityType="Self.CustomerDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GroupMaster" EntityType="Self.GroupMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferImageMaster" EntityType="Self.OfferImageMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductImages" EntityType="Self.ProductImages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductMaster" EntityType="Self.ProductMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductOrderDetail" EntityType="Self.ProductOrderDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductRemark" EntityType="Self.ProductRemark" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShoppingUser" EntityType="Self.ShoppingUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StateMaster" EntityType="Self.StateMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubCategoryMaster" EntityType="Self.SubCategoryMaster" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

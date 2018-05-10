@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BIShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AdminUserMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Remarks" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="BannerMaster">
+    <Key>
+      <PropertyRef Name="BannerId" />
+    </Key>
+    <Property Name="BannerId" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Remarks" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="BrandMaster">
+    <Key>
+      <PropertyRef Name="BrandId" />
+    </Key>
+    <Property Name="BrandId" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Remarks" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="CategoryMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Remarks" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="BannerImage" Type="String" MaxLength="700" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="GroupMaster">
+    <Key>
+      <PropertyRef Name="GroupId" />
+    </Key>
+    <Property Name="GroupId" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GroupName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="OfferImageMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProductId" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BannerUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Remarks" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="SubCategoryMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CategoryId" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="CategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Remarks" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityContainer Name="BIShopEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AdminUserMasters" EntityType="Self.AdminUserMaster" />
+    <EntitySet Name="BannerMasters" EntityType="Self.BannerMaster" />
+    <EntitySet Name="BrandMasters" EntityType="Self.BrandMaster" />
+    <EntitySet Name="CategoryMasters" EntityType="Self.CategoryMaster" />
+    <EntitySet Name="GroupMasters" EntityType="Self.GroupMaster" />
+    <EntitySet Name="OfferImageMasters" EntityType="Self.OfferImageMaster" />
+    <EntitySet Name="SubCategoryMasters" EntityType="Self.SubCategoryMaster" />
+    <EntitySet Name="StateMasters" EntityType="BIShopModel.StateMaster" />
+    <EntitySet Name="ProductImages" EntityType="BIShopModel.ProductImage" />
+    <EntitySet Name="CityMasters" EntityType="BIShopModel.CityMaster" />
+    <EntitySet Name="CustomerDetails" EntityType="BIShopModel.CustomerDetail" />
+    <EntitySet Name="OrderDetails" EntityType="BIShopModel.OrderDetail" />
+    <EntitySet Name="ProductMasters" EntityType="BIShopModel.ProductMaster" />
+    <EntitySet Name="ProductOrderDetails" EntityType="BIShopModel.ProductOrderDetail" />
+    <EntitySet Name="ProductRemarks" EntityType="BIShopModel.ProductRemark" />
+    <EntitySet Name="CartMasters" EntityType="BIShopModel.CartMaster" />
+    <EntitySet Name="ShoppingUsers" EntityType="BIShopModel.ShoppingUser" />
+  </EntityContainer>
+  <EntityType Name="StateMaster">
+    <Key>
+      <PropertyRef Name="StateId" />
+    </Key>
+    <Property Name="StateId" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="StateName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="ProductImage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="Imageurl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ProductId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="CityMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="CityName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="StateId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="PinCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="CustomerDetail">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CityId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNo" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="Username" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="OrderNo" />
+    </Key>
+    <Property Name="OrderNo" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+    <Property Name="ManufacturerComapany" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CityId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNo" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentMode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Wallet" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="OnlineDD" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="DDno" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="DDAmount" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="DDDate" Type="DateTime" Precision="3" />
+    <Property Name="OrderStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CancelDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="ProductMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="CategoryId" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="CategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MRP" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Remarks" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="SubCategoryId" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="BrandId" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="Dp" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Bv" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="HomePage" Type="Boolean" />
+    <Property Name="Recommended" Type="Boolean" />
+    <Property Name="Featured" Type="Boolean" />
+    <Property Name="DetailDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ProductImage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="BrandName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="SubCategoryName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Quantity" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ProductOrderDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="ProductId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="Quantity" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="OrderId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ProductRemark">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Rating" Type="Int16" />
+    <Property Name="Review" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="ProductId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="CartMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="Uid" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="Pid" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="Quantity" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ShoppingUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>
