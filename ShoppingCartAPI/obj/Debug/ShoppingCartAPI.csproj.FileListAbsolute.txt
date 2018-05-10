@@ -58,6 +58,6 @@ C:\Users\lenovo\Documents\Visual Studio 2015\Projects\ShoppingCartAPI\ShoppingCa
 C:\Users\lenovo\Documents\Visual Studio 2015\Projects\ShoppingCartAPI\ShoppingCartAPI\bin\System.Net.Http.Formatting.xml
 C:\Users\lenovo\Documents\Visual Studio 2015\Projects\ShoppingCartAPI\ShoppingCartAPI\bin\System.Web.Http.xml
 C:\Users\lenovo\Documents\Visual Studio 2015\Projects\ShoppingCartAPI\ShoppingCartAPI\bin\System.Web.Http.WebHost.xml
+C:\Users\lenovo\Documents\Visual Studio 2015\Projects\ShoppingCartAPI\ShoppingCartAPI\obj\Debug\ShoppingCartAPI.csprojResolveAssemblyReference.cache
 C:\Users\lenovo\Documents\Visual Studio 2015\Projects\ShoppingCartAPI\ShoppingCartAPI\obj\Debug\ShoppingCartAPI.dll
 C:\Users\lenovo\Documents\Visual Studio 2015\Projects\ShoppingCartAPI\ShoppingCartAPI\obj\Debug\ShoppingCartAPI.pdb
-C:\Users\lenovo\Documents\Visual Studio 2015\Projects\ShoppingCartAPI\ShoppingCartAPI\obj\Debug\ShoppingCartAPI.csprojResolveAssemblyReference.cache

@@ -199,6 +199,21 @@
           <Property Name="Remarks" Type="varchar" MaxLength="200" />
           <Property Name="IsActive" Type="bit" />
         </EntityType>
+        <EntityType Name="UserShippingAddress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="pincode" Type="nvarchar" MaxLength="10" />
+          <Property Name="Town" Type="nvarchar" MaxLength="100" />
+          <Property Name="City" Type="nvarchar" MaxLength="100" />
+          <Property Name="State" Type="nvarchar" MaxLength="100" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="12" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="7" />
+          <Property Name="DefaultAddress" Type="bit" />
+        </EntityType>
         <EntityContainer Name="BIShopModelStoreContainer">
           <EntitySet Name="AdminUserMaster" EntityType="Self.AdminUserMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BannerMaster" EntityType="Self.BannerMaster" Schema="dbo" store:Type="Tables" />
@@ -217,6 +232,7 @@
           <EntitySet Name="ShoppingUser" EntityType="Self.ShoppingUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StateMaster" EntityType="Self.StateMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubCategoryMaster" EntityType="Self.SubCategoryMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserShippingAddress" EntityType="Self.UserShippingAddress" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -309,6 +325,7 @@
           <EntitySet Name="ProductRemarks" EntityType="BIShopModel.ProductRemark" />
           <EntitySet Name="CartMasters" EntityType="BIShopModel.CartMaster" />
           <EntitySet Name="ShoppingUsers" EntityType="BIShopModel.ShoppingUser" />
+          <EntitySet Name="UserShippingAddresses" EntityType="BIShopModel.UserShippingAddress" />
         </EntityContainer>
         <EntityType Name="StateMaster">
           <Key>
@@ -434,6 +451,21 @@
           <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserShippingAddress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="pincode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Town" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="DefaultAddress" Type="Boolean" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -648,6 +680,22 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserShippingAddresses">
+            <EntityTypeMapping TypeName="BIShopModel.UserShippingAddress">
+              <MappingFragment StoreEntitySet="UserShippingAddress">
+                <ScalarProperty Name="DefaultAddress" ColumnName="DefaultAddress" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Town" ColumnName="Town" />
+                <ScalarProperty Name="pincode" ColumnName="pincode" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

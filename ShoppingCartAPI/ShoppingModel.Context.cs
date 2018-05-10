@@ -42,5 +42,6 @@ namespace ShoppingCartAPI
         public virtual DbSet<ProductRemark> ProductRemarks { get; set; }
         public virtual DbSet<CartMaster> CartMasters { get; set; }
         public virtual DbSet<ShoppingUser> ShoppingUsers { get; set; }
+        public virtual DbSet<UserShippingAddress> UserShippingAddresses { get; set; }
     }
 }

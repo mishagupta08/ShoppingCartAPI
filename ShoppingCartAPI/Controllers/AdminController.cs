@@ -22,6 +22,16 @@ namespace ShoppingCartAPI.Controllers
             return Content(HttpStatusCode.OK, result, Configuration.Formatters.JsonFormatter);
         }
 
+        [HttpPost, Route("api/Admin/ManageShippingAddress/{operation}")]
+        public async Task<IHttpActionResult> ManageShippingAddress(string operation)
+        {
+            var detail = await Request.Content.ReadAsStringAsync();
+            var filters = JsonConvert.DeserializeObject<UserShippingAddress>(detail);
+            this.repository = new AdminRepository();
+            var result = await this.repository.ManageShippingAddress(filters, operation);
+            return Content(HttpStatusCode.OK, result, Configuration.Formatters.JsonFormatter);
+        }
+
         [HttpPost, Route("api/Admin/ManageGroup/{operation}")]
         public async Task<IHttpActionResult> ManageGroup(string operation)
         {

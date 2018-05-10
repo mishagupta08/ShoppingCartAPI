@@ -1486,5 +1486,83 @@ namespace ShoppingCartAPI.Repository
 
             return responseDetail;
         }
+
+        public async Task<Response> ManageShippingAddress(UserShippingAddress addressDetail, string operation)
+        {
+            Response responseDetail = new Response();
+            if (string.IsNullOrEmpty(operation) || addressDetail == null)
+            {
+                responseDetail.ResponseValue = "Please send complete details.";
+            }
+
+            if (operation == "Add")
+            {
+
+                addressDetail.Id = Guid.NewGuid().ToString().Substring(0, 5);
+                entity.UserShippingAddresses.Add(addressDetail);
+                var id = await entity.SaveChangesAsync();
+                responseDetail.Status = true;
+                responseDetail.ResponseValue = Convert.ToString(id);
+            }
+            else if (operation == "Edit" || operation == "Delete")
+            {
+                var adress = entity.UserShippingAddresses.FirstOrDefault(g => g.Id == addressDetail.Id);
+                if (adress == null)
+                {
+                    responseDetail.ResponseValue = "User not found.";
+                }
+                else
+                {
+                    if (operation == "Edit")
+                    {
+                        adress.Address = addressDetail.Address;
+                        adress.City = addressDetail.City;
+                        adress.DefaultAddress = addressDetail.DefaultAddress;
+                        adress.MobileNo = addressDetail.MobileNo;
+                        adress.Name = addressDetail.Name;
+                        adress.pincode = addressDetail.pincode;
+                        adress.State = addressDetail.State;
+                        adress.Town = addressDetail.Town;
+                        responseDetail.ResponseValue = "Address edit successfully.";
+                    }
+                    else
+                    {
+                        entity.UserShippingAddresses.Remove(adress);
+                        responseDetail.Status = true;
+                        responseDetail.ResponseValue = "Address deleted successfully.";
+                    }
+
+                    await entity.SaveChangesAsync();
+                }
+            }
+            else if (operation == "AddressById")
+            {
+                var address = entity.UserShippingAddresses.FirstOrDefault(g => g.Id == addressDetail.Id);
+                if (address == null)
+                {
+                    responseDetail.ResponseValue = "No Records found.";
+                }
+                else
+                {
+                    responseDetail.Status = true;
+                    responseDetail.ResponseValue = new JavaScriptSerializer().Serialize(address);
+                }
+            }
+            else if (operation == "AddressByUserId")
+            {
+                var adresses = entity.UserShippingAddresses.Where(g => g.UserId == addressDetail.UserId);
+                if (adresses == null)
+                {
+                    responseDetail.ResponseValue = "No Records found.";
+                }
+                else
+                {
+                    responseDetail.Status = true;
+                    responseDetail.ResponseValue = new JavaScriptSerializer().Serialize(adresses);
+                }
+            }
+
+            return responseDetail;
+        }
     }
 }

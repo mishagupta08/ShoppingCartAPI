@@ -270,6 +270,9 @@
     <Compile Include="SubCategoryMaster.cs">
       <DependentUpon>ShoppingModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="UserShippingAddress.cs">
+      <DependentUpon>ShoppingModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
